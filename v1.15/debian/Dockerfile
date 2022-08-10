@@ -5,6 +5,8 @@ FROM ruby:3.0-slim-bullseye
 LABEL maintainer "Fluentd developers <fluentd@googlegroups.com>"
 LABEL Description="Calyptia Fluentd docker image" Vendor="Calyptia, Inc." Version="1.15.1"
 ENV TINI_VERSION=0.18.0
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NOWARNINGS="yes"
 
 # Do not split this into multiple RUN!
 # Docker creates a layer for every RUN-Statement
@@ -25,6 +27,18 @@ RUN apt-get update \
  && gem install capng_c -v 0.2.2 \
  && gem install bundler -v 2.3.11 \
  && gem install fluentd -v 1.15.1 \
+ && gem install fluent-plugin-concat -v 2.5.0 \
+ && gem install fluent-plugin-opensearch -v 1.0.8 \
+ && gem install fluent-plugin-grafana-loki -v 1.2.18 \
+ && gem install fluent-plugin-kafka -v 0.17.5 \
+ && gem install fluent-plugin-macos-log -v 0.0.3 \
+ && gem install fluent-plugin-multi-format-parser -v 1.0.0 \
+ && gem install fluent-plugin-prometheus -v 2.0.3 \
+ && gem install fluent-plugin-record-modifier -v 2.1.0 \
+ && gem install fluent-plugin-rewrite-tag-filter -v 2.4.0 \
+ && gem install fluent-plugin-string-scrub -v 1.0.1 \
+ && gem install fluent-plugin-systemd -v 1.0.5 \
+ && gem install fluent-plugin-vmware-loginsight -v 1.0.0 \
  && gem install fluent-plugin-metrics-cmetrics -v 0.1.2 \
  && gem install fluent-plugin-calyptia-monitoring -v 0.1.3 \
  && gem install fluent-plugin-cmetrics -v 0.1.0 \
