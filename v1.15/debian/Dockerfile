@@ -3,7 +3,7 @@
 
 FROM ruby:3.0-slim-bullseye
 LABEL maintainer "Fluentd developers <fluentd@googlegroups.com>"
-LABEL Description="Calyptia Fluentd docker image" Vendor="Calyptia, Inc." Version="1.15.1"
+LABEL Description="Calyptia Fluentd docker image" Vendor="Calyptia, Inc." Version="1.15.2"
 ENV TINI_VERSION=0.18.0
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NOWARNINGS="yes"
@@ -26,7 +26,7 @@ RUN apt-get update \
  && gem install async-http -v 0.56.6 \
  && gem install capng_c -v 0.2.2 \
  && gem install bundler -v 2.3.11 \
- && gem install fluentd -v 1.15.1 \
+ && gem install fluentd -v 1.15.2 \
  && gem install fluent-plugin-concat -v 2.5.0 \
  && gem install fluent-plugin-opensearch -v 1.0.8 \
  && gem install fluent-plugin-grafana-loki -v 1.2.18 \
